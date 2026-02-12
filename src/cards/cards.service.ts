@@ -21,15 +21,25 @@ export class CardsService {
   }
 
   findAll() {
-    return `This action returns all cards`;
+    return this.prisma.card.findMany({
+      select: { id:true }
+    });
   }
 
   findOne(id: number) {
     return `This action returns a #${id} card`;
   }
 
-  update(id: number, updateCardDto: UpdateCardDto) {
-    return `This action updates a #${id} card`;
+  async update(id: number, updateCardDto: UpdateCardDto) {
+    return this.prisma.card.update({
+      where: { id },
+      data: {
+        title: updateCardDto.title,
+        description: updateCardDto.description,
+        position: updateCardDto.position,
+        listId: updateCardDto.listId
+      },
+    });
   }
 
   remove(id: number) {

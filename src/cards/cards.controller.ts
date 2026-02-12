@@ -25,8 +25,10 @@ export class CardsController {
   }
 
   @Patch(':id')
+  @UseGuards(AuthGuard('jwt'))
   update(@Param('id') id: string, @Body() updateCardDto: UpdateCardDto) {
-    return this.cardsService.update(+id, updateCardDto);
+    const listId = parseInt(id);
+    return this.cardsService.update(listId, updateCardDto);
   }
 
   @Delete(':id')

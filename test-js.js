@@ -24,7 +24,7 @@ fetch('http://localhost:3000/auth/login',{
 fetch('http://localhost:3000/users/profile',{
     method: 'GET',
     headers:{
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA4MjIwMzAsImV4cCI6MTc3MDkwODQzMH0.Z5oTziORjrrrmtZpj_HcAfIXAMa1lDF5BVCXTT86hVk',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA5MTExNjksImV4cCI6MTc3MzUwMzE2OX0.D0i8yysV-GJ1azWZbibBsRjTPF_AYwFh64pwnM6OJUY',
         'Content-Type': 'application/json'
         },
 })
@@ -34,7 +34,7 @@ fetch('http://localhost:3000/users/profile',{
 fetch('http://localhost:3000/boards',{
     method: 'POST',
     headers:{ 
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA4MjIwMzAsImV4cCI6MTc3MDkwODQzMH0.Z5oTziORjrrrmtZpj_HcAfIXAMa1lDF5BVCXTT86hVk',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA5MTExNjksImV4cCI6MTc3MzUwMzE2OX0.D0i8yysV-GJ1azWZbibBsRjTPF_AYwFh64pwnM6OJUY',
         'Content-Type': 'application/json'},
     body: JSON.stringify({
         "title": "Meu primeiro board"
@@ -46,7 +46,7 @@ fetch('http://localhost:3000/boards',{
 fetch('http://localhost:3000/boards',{
     method: 'POST',
     headers:{ 
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA4MjIwMzAsImV4cCI6MTc3MDkwODQzMH0.Z5oTziORjrrrmtZpj_HcAfIXAMa1lDF5BVCXTT86hVk',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA5MTExNjksImV4cCI6MTc3MzUwMzE2OX0.D0i8yysV-GJ1azWZbibBsRjTPF_AYwFh64pwnM6OJUY',
         'Content-Type': 'application/json'},
     body: JSON.stringify({
         "title": "Meu primeiro board"
@@ -59,7 +59,7 @@ fetch('http://localhost:3000/boards',{
 fetch('http://localhost:3000/lists',{
     method: 'POST',
     headers:{ 
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA4MjIwMzAsImV4cCI6MTc3MDkwODQzMH0.Z5oTziORjrrrmtZpj_HcAfIXAMa1lDF5BVCXTT86hVk',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA5MTExNjksImV4cCI6MTc3MzUwMzE2OX0.D0i8yysV-GJ1azWZbibBsRjTPF_AYwFh64pwnM6OJUY',
         'Content-Type': 'application/json'},
     body: JSON.stringify({
         "title": "Minha primeira lista",
@@ -73,13 +73,43 @@ fetch('http://localhost:3000/lists',{
 fetch('http://localhost:3000/cards',{
     method: 'POST',
     headers:{ 
-        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA4MjIwMzAsImV4cCI6MTc3MDkwODQzMH0.Z5oTziORjrrrmtZpj_HcAfIXAMa1lDF5BVCXTT86hVk',
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA5MTExNjksImV4cCI6MTc3MzUwMzE2OX0.D0i8yysV-GJ1azWZbibBsRjTPF_AYwFh64pwnM6OJUY',
         'Content-Type': 'application/json'},
     body: JSON.stringify({
         "title": "Meu primeiro card",
         "description": "Descrição do meu primeiro card",
         "listId": 1,
     }),
+})
+.then(response => response.json())
+.then(data => console.log(data));
+
+fetch('http://localhost:3000/boards/userBoard/1',{
+    method: 'GET',
+    headers:{ 
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA5MTExNjksImV4cCI6MTc3MzUwMzE2OX0.D0i8yysV-GJ1azWZbibBsRjTPF_AYwFh64pwnM6OJUY',
+        'Content-Type': 'application/json',
+    },
+})
+.then(response => response.json())
+.then(data => console.log(data));
+
+fetch('http://localhost:3000/cards',{
+    method: 'GET',
+    headers:{ 
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA5MTExNjksImV4cCI6MTc3MzUwMzE2OX0.D0i8yysV-GJ1azWZbibBsRjTPF_AYwFh64pwnM6OJUY',
+        'Content-Type': 'application/json',
+    },
+})
+.then(response => response.json())
+.then(data => console.log(data));
+
+fetch('http://localhost:3000/boards/deleteBoard/1',{
+    method: 'DELETE',
+    headers:{ 
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjIsImVtYWlsIjoiY29uc2FuaWx1YW40MkBnbWFpbC5jb20iLCJpYXQiOjE3NzA5MTExNjksImV4cCI6MTc3MzUwMzE2OX0.D0i8yysV-GJ1azWZbibBsRjTPF_AYwFh64pwnM6OJUY',
+        'Content-Type': 'application/json',
+    },
 })
 .then(response => response.json())
 .then(data => console.log(data));
