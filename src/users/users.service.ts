@@ -6,14 +6,39 @@ import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UsersService {
-  constructor(private prisma: PrismaServide){}
+  constructor(private prisma: PrismaService){}
+  
   async create(createUserDto: CreateUserDto) {
     const salt = await bcrypt.genSalt();
     const hashedPassword = await bcrypt.hash(createUserDto.password, salt);
+
+    return this.prisma.user.create({
+      data: {
+        ...createUserDto,
+        password: hashedPassword,
+      },
+    });
   }
 
   findAll() {
-    return `This action returns all users`;
+    return this.prisma.user.findMany({
+      select: {id: true, name:true, email: true}
+    })
+  }
+
+  async validateUser(email: string, pass: string){
+    const user = await this.prisma.user.findUnique({
+      where: {email}
+    });
+    
+    if(user ){
+      const isMatch = await bcrypt.compare(pass, user.password);
+      if(isMatch){
+        const { password, ...result } = user;
+        return result;
+      }
+    }
+    return null;
   }
 
   findOne(id: number) {

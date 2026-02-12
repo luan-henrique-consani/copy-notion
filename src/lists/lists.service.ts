@@ -1,11 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { CreateListDto } from './dto/create-list.dto';
 import { UpdateListDto } from './dto/update-list.dto';
+import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class ListsService {
-  create(createListDto: CreateListDto) {
-    return 'This action adds a new list';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createListDto: CreateListDto) {
+    const position = createListDto.position ?? await this.prisma.list.count({
+      where: { boardId: createListDto.boardId },
+    });
+
+    return this.prisma.list.create({
+      data: {
+        ...createListDto,
+        position: position
+      },
+    });
   }
 
   findAll() {

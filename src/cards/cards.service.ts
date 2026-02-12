@@ -1,11 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { CreateCardDto } from './dto/create-card.dto';
 import { UpdateCardDto } from './dto/update-card.dto';
+import { PrismaService } from 'src/prisma.service';
+
 
 @Injectable()
 export class CardsService {
-  create(createCardDto: CreateCardDto) {
-    return 'This action adds a new card';
+  constructor(private prisma: PrismaService) {}
+
+  async create(createCardDto: CreateCardDto) {
+    const position = createCardDto.position ?? await this.prisma.card.count({
+      where: { listId: createCardDto.listId }
+    });
+    return this.prisma.card.create({
+      data: {
+        ...createCardDto,
+        position: position
+      },
+    });
   }
 
   findAll() {
