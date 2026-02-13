@@ -1,6 +1,6 @@
-'use/client';
+'use client';
 import { useState } from "react";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage(){
     const [ email, setEmail ] = useState('');
@@ -27,7 +27,7 @@ export default function LoginPage(){
     };
 
     return (
-        <div className="flex min-h-screen items-center justify-centre bg-gray-50">
+        <div className="flex min-h-screen items-center justify-center bg-gray-50">
             <form onSubmit={ handleLogin} className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
                 <h1 className="text-2xl font-bold mb-6 text-gray-800">Entrar no project Kanbam!</h1>
                 <input type="email"
