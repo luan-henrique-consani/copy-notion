@@ -29,7 +29,7 @@ export default function LoginPage(){
     return (
         <div className="flex min-h-screen items-center justify-center bg-gray-50">
             <form onSubmit={ handleLogin} className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-                <h1 className="text-2xl font-bold mb-6 text-gray-800">Entrar no project Kanbam!</h1>
+                <h1 className="text-2xl font-bold mb-6 text-gray-800 text-center">Entrar no project Kanbam!</h1>
                 <input type="email"
                 placeholder="Email:"
                 className="w-full p-2 mb-4 border rounded"

@@ -22,7 +22,7 @@ export default function Dashboard() {
             },
         })
             .then(response => response.json())
-            .then(data => console.log(data))
+            .then(data => setBoards(data))
             .catch(err => console.error("Erro ao carregar boards:", err));
     }, []);
 
