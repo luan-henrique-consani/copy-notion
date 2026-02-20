@@ -27,6 +27,15 @@ export class BoardsController {
     return this.boardsService.findOne(id, userId);
   }
 
+  @Patch(':boardId')
+  @UseGuards(AuthGuard('jwt'))
+  update(@Param('boardId') boardId: string, @Request() userReq: any, @Body() updateBoardDto: any){
+    const userId = userReq.user.userId;
+    const id = parseInt(boardId);
+
+    return this.boardsService.update(id, updateBoardDto, userId);
+  }
+
   @Delete('deleteBoard/:boardId')
   @UseGuards(AuthGuard('jwt'))
   delete(@Param('boardId') boardId: string, @Request() userReq: any){

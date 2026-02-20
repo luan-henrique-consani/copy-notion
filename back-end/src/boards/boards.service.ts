@@ -3,10 +3,11 @@ import { CreateBoardDto } from './dto/create-board.dto';
 import { UpdateBoardDto } from './dto/update-board.dto';
 import { PrismaService } from 'src/prisma.service';
 import { CardsService } from '../cards/cards.service';
+import { EventsGateway } from 'src/events/events.gateway';
 
 @Injectable()
 export class BoardsService {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService, private eventsgateway: EventsGateway) {}
 
 
   async create(createBoardDto: any, userId: number) {
@@ -48,8 +49,18 @@ export class BoardsService {
 
   }
 
-  update(id: number, updateBoardDto: UpdateBoardDto) {
-    return `This action updates a #${id} board`;
+  async update(id: number, updateBoardDto: UpdateBoardDto, userId: number) {
+    const board = await this.prisma.board.update({
+      where: { id },
+      data: updateBoardDto,
+    });
+
+    if(!board || board.ownerId !== userId){
+      throw new UnauthorizedException('Você não tem autorização para atualizar esse board!')
+    }
+    this.eventsgateway.emitBoardUpdate(id);
+
+    return board;
   }
 
   async remove(id: number, userId: number) {

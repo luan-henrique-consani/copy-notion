@@ -24,9 +24,11 @@ export class ListsController {
     return this.listsService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateListDto: UpdateListDto) {
-    return this.listsService.update(+id, updateListDto);
+  @Patch(':listId')
+  @UseGuards(AuthGuard('jwt'))
+  update(@Param('listId') listId: string, @Body() updateListDto: any) {
+    const id = parseInt(listId);
+    return this.listsService.update(id, updateListDto);
   }
 
   @Delete(':id')

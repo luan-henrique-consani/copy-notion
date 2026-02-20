@@ -26,6 +26,29 @@ export default function Dashboard() {
             .catch(err => console.error("Erro ao carregar boards:", err));
     }, []);
 
+    const handleCreateBoard = async () =>{
+        const token = localStorage.getItem('access_token');
+
+        if(!token){
+            alert('Sessão expirada, faça login novamente');
+            router.push('/login')
+            return;
+        }
+        const response = await fetch('http://localhost:3000/boards',{
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({ title: 'Novo Quadro (clique para renomear)'})
+        });
+
+        if(response.ok){
+            const newBoard = await response.json();
+            router.push(`/board/${newBoard.id}`);
+        }
+    };
+
     return (
         <div className="p-8 bg-gray-50 min-h-screen">
             <div className="max-w-4xl mx-auto">
@@ -44,9 +67,11 @@ export default function Dashboard() {
                     ))}
 
                     {/* Botão de "Criar Novo" estilizado */}
+                    <button onClick={handleCreateBoard}>
                     <div className="bg-gray-100 p-6 rounded-lg border-2 border-dashed border-gray-300 flex items-center justify-center hover:bg-gray-200 transition cursor-pointer">
                         <span className="text-gray-500 font-medium">+ Novo Quadro</span>
                     </div>
+                    </button>
                 </div>
             </div>
         </div>

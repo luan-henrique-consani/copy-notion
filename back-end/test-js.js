@@ -113,3 +113,16 @@ fetch('http://localhost:3000/boards/deleteBoard/1',{
 })
 .then(response => response.json())
 .then(data => console.log(data));
+
+
+fetch('http://localhost:3000/cards/1',{
+    method: 'PATCH',
+    headers:{ 
+        'Authorization': `Bearer `,
+        'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        position: 2
+    }),
+})
+.then(response => response.json())
+.then(data => console.log(data));
